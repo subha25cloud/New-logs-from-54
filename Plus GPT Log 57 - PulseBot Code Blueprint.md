@@ -7,35 +7,33 @@ To define the complete Python-based architecture of **PulseBot**, the CNS-contro
 
 ## 1. Project Directory Structure
 
-```
 pulsebot/
-â”œâ”€â”€ main.py                         # Master trigger file (CNS starts here)
-â”œâ”€â”€ config/
-â”‚   â””â”€â”€ api_keys.json              # Token, client ID, credentials
-â”œâ”€â”€ strategies/
-â”‚   â””â”€â”€ strategy_loader.py        # Loads active JSON strategy files
-â”œâ”€â”€ executor/
-â”‚   â”œâ”€â”€ pulse_executor.py         # Order management + signal processor
-â”‚   â”œâ”€â”€ position_manager.py       # Entry, exit, SL, trailing stop
-â”‚   â””â”€â”€ sizing_engine.py          # ML7-based position sizer
-â”œâ”€â”€ ml/
-â”‚   â”œâ”€â”€ ml_router.py              # ML1â€“ML7 API connector
-â”‚   â”œâ”€â”€ sentiment_filter.py       # ML3-specific NLP logic
-â”‚   â””â”€â”€ regime_engine.py          # ML4-based market regime controller
-â”œâ”€â”€ watcher/
-â”‚   â”œâ”€â”€ universe_filter.py        # Pre-market ML-based stock filter (Log 24)
-â”‚   â””â”€â”€ signal_detector.py        # Signal scanner per active strategy
-â”œâ”€â”€ bridge/
-â”‚   â””â”€â”€ cns_bridge.py             # Communication between CNS â†” PulseBot
-â”œâ”€â”€ ui/
-â”‚   â””â”€â”€ alert_dispatcher.py       # Telegram + voice call alerts (Log 59)
-â”œâ”€â”€ data/
-â”‚   â””â”€â”€ logs/                     # Trade logs, backtest results, JSON state
-â””â”€â”€ utils/
-    â”œâ”€â”€ time_utils.py
-    â”œâ”€â”€ vwap_calculator.py
-    â””â”€â”€ volume_profile.py
-```
+├── main.py                         # Master trigger file (CNS starts here)
+├── config/
+│   └── api_keys.json              # Token, client ID, credentials
+├── strategies/
+│   └── strategy_loader.py        # Loads active JSON strategy files
+├── executor/
+│   ├── pulse_executor.py         # Order management + signal processor
+│   ├── position_manager.py       # Entry, exit, SL, trailing stop
+│   └── sizing_engine.py          # ML7-based position sizer
+├── ml/
+│   ├── ml_router.py              # ML1–ML7 API connector
+│   ├── sentiment_filter.py       # ML3-specific NLP logic
+│   └── regime_engine.py          # ML4-based market regime controller
+├── watcher/
+│   ├── universe_filter.py        # Pre-market ML-based stock filter (Log 24)
+│   └── signal_detector.py        # Signal scanner per active strategy
+├── bridge/
+│   └── cns_bridge.py             # Communication between CNS ↔ PulseBot
+├── ui/
+│   └── alert_dispatcher.py       # Telegram + voice call alerts (Log 59)
+├── data/
+│   └── logs/                     # Trade logs, backtest results, JSON state
+└── utils/
+    ├── time_utils.py
+    ├── vwap_calculator.py
+    └── volume_profile.py
 
 ---
 
